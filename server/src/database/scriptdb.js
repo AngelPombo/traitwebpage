@@ -39,11 +39,8 @@ async function createDB(){
             (
                 id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
                 create_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                last_update DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                edited BOOLEAN DEFAULT FALSE,
                 title VARCHAR(100) NOT NULL,
-                content VARCHAR(2000) NOT NULL,
-                event_type ENUM('Tipo 1', 'Tipo 2') NOT NULL
+                content VARCHAR(10000) NOT NULL
             );
             `
         );
