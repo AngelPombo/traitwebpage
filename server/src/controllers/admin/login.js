@@ -36,8 +36,7 @@ async function login (req,res,next) {
             name: admin[0].admin_name
         }
 
-        const token = jwt.sign(info, process.env.SECRET, {expiresIn: '1d'});
-
+        const token = jwt.sign(info, process.env.SECRET_TOKEN, {expiresIn: '1d'});
 
         res.status(200).send({
             status: 'OK',

@@ -5,10 +5,15 @@ const path = require('path');
 const cors = require('cors');
 const server = express();
 
+const adminRouter = require('../src/routes/adminRouter');
+
 server.use(cors());
 server.use(express.json())
 /* server.use(express.urlencoded({extended: false})); */
 server.use(fileupload());
+
+server.use('/admin', adminRouter);
+
 
 server.use((err, _req, res, _next) => {
     console.log("ERROR: " + err.message);
