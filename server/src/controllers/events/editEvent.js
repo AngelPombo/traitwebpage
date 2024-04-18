@@ -24,25 +24,6 @@ async function editEvent (req,res,next) {
         }
 
         const { title, content } = req.body;
-
-        const [duplicateEvent] = await pool.query(
-            `
-            SELECT e.id, e.title, e.content, GROUP_CONCAT(ep.id) AS photos_ids, GROUP_CONCAT(ep.photo_name) AS event_photos
-            FROM events e
-            LEFT JOIN
-            events_photos AS ep ON e.id = ep.event_id
-            GROUP BY e.id
-            `
-            /* aqui había un where con [link] 
-            ojo cuidao
-            preguntar antía*/
-        );
-        
-        convertPhotosIds(duplicateEvent);
-
-        if(duplicateEvent.length && duplicateEvent[0].id !== parseInt(idEvent)){
-            return next(generateError('Ya existe ese evento en la web, edítalo o elimínalo para evitar contenidos duplicados', 400));
-        }
         
         if(req.files){
             const [countIdPhotos] = await pool.query(
@@ -95,8 +76,7 @@ async function editEvent (req,res,next) {
                 SET title = ?, content = ?
                 WHERE id = ?
             `,
-            [title, content, idEvent] 
-            /*DUDA AQUÍ TAMBIÉN SI PASAMOS IDEVENT O NO Y SI ES NECESARIO EDITED=1*/ 
+            [title, content, idEvent]  
         );
 
         const [updatedEvent] = await pool.query(
@@ -108,7 +88,6 @@ async function editEvent (req,res,next) {
                 WHERE e.id=?
                 GROUP BY e.id
             `,
-            /*Pinta a que este debería ser como tendríamos que poner el primero de arriba donde tuvimos duda */
             [idEvent]
         );
 
