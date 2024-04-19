@@ -5,6 +5,7 @@ const adminLoginSchema = require('../../schemas/adminLoginSchema');
 
 async function login (req,res,next) {
     try{
+        
         const {name, pwd} = req.body;
 
         const { error } = adminLoginSchema.validate(req.body);

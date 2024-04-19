@@ -21,7 +21,7 @@ async function deletePhotoEvent(req,res,next) {
         }
 
         
-        await deletePhoto(current[0].photo);
+        await deletePhoto(current[0].photo_name);
 
         
         await connect.query(
