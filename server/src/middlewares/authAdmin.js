@@ -3,6 +3,7 @@ const generateError = require('../helpers/generateError');
 
 const authAdmin = async (req, res, next) => {
   try {
+    
     const { token } = req.headers;
 
     if (!token) {
@@ -12,6 +13,7 @@ const authAdmin = async (req, res, next) => {
     let tokenInfo;
 
     try {
+      
       tokenInfo = await jwt.verify(token, process.env.SECRET_TOKEN);
     } catch {
       return next(generateError('Token incorrecto', 401));
@@ -21,6 +23,7 @@ const authAdmin = async (req, res, next) => {
 
     next();
   } catch (error) {
+    
     next(error);
   }
 };

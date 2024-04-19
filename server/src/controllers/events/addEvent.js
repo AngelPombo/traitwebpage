@@ -6,7 +6,9 @@ const { photoSchema, arrayPhotoSchema } = require('../../schemas/photoSchema');
 
 
 async function addEvent (req,res,next) {
+
     try{
+
         const insertedPhotos = [];
         const pool = await getPool();
 
@@ -39,8 +41,9 @@ async function addEvent (req,res,next) {
             return next(generateError(error.message, 400));
         }
         
-        
+
         const { title, content } = req.body;
+
 
         const [newEvent] = await pool.query(
             `
@@ -77,7 +80,9 @@ async function addEvent (req,res,next) {
             message: "Evento creado correctamente",
             data: newEvent
         });
+
     } catch (e){
+        
         console.log(e)
         next(e)
     }

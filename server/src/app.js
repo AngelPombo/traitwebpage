@@ -6,6 +6,7 @@ const cors = require('cors');
 const server = express();
 
 const adminRouter = require('../src/routes/adminRouter');
+const eventsRouter = require('../src/routes/eventsRouter');
 
 server.use(cors());
 server.use(express.json())
@@ -13,6 +14,7 @@ server.use(express.json())
 server.use(fileupload());
 
 server.use('/admin', adminRouter);
+server.use('/events', eventsRouter);
 
 
 server.use((err, _req, res, _next) => {
