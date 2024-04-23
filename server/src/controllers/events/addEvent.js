@@ -42,15 +42,15 @@ async function addEvent (req,res,next) {
         }
         
 
-        const { title, content } = req.body;
+        const { title, content, event_date } = req.body;
 
 
         const [newEvent] = await pool.query(
             `
-                INSERT INTO events (create_date, title, content, id)
-                VALUES (?,?,?,DEFAULT)
+                INSERT INTO events (create_date, title, content, event_date, id)
+                VALUES (?,?,?,?,DEFAULT)
             `,
-            [new Date(), title, content] 
+            [new Date(), title, content, new Date(event_date)] 
         );
 
         const {insertId} = newEvent;

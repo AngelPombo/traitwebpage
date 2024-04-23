@@ -40,7 +40,8 @@ async function createDB(){
                 id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
                 create_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 title VARCHAR(100) NOT NULL,
-                content VARCHAR(10000) NOT NULL
+                content VARCHAR(10000) NOT NULL,
+                event_date DATETIME NOT NULL
             );
             `
         );
@@ -68,6 +69,22 @@ async function createDB(){
                 photo_name VARCHAR(500),
                 photo_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
             )
+            `
+        );
+
+        /* TODO ESTO DE VIDEO ESTAMOS PROBANDOLO (TEST) */
+
+        await pool.query(
+            `
+            CREATE TABLE IF NOT EXISTS videos
+            (
+                id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+                video_name VARCHAR(500),
+                video_path VARCHAR(500),
+                upload_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                event_id INT UNSIGNED NOT NULL,
+                FOREIGN KEY (event_id) REFERENCES events(id)
+            );
             `
         )
 
