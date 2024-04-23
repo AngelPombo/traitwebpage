@@ -1,0 +1,8 @@
+# Dependencias
+/node_modules
+
+# Archivos subidos
+/uploads
+
+# Archivos de configuración
+.env
