@@ -1,0 +1,10 @@
+.header{
+    display: flex;
+    background-color: tomato;
+    padding-left: 1rem;
+}
+
+.logo-img{
+    width: 5rem;
+}
+
