@@ -23,7 +23,7 @@ async function editEvent (req,res,next) {
             return next(generateError(error.message, 400));
         }
 
-        const { title, content, event_date } = req.body;
+        const { title, content, video1, video2, video3, event_date } = req.body;
         
         if(req.files){
             const [countIdPhotos] = await pool.query(
@@ -73,15 +73,15 @@ async function editEvent (req,res,next) {
         const [editedEvent] = await pool.query(
             `
                 UPDATE events 
-                SET title = ?, content = ?, event_date=?
+                SET title = ?, content = ?, video1 = ?, video2 = ?, video3 = ? event_date=?
                 WHERE id = ?
             `,
-            [title, content, event_date, idEvent]  
+            [title, content, video1, video2, video3, event_date, idEvent]  
         );
 
         const [updatedEvent] = await pool.query(
             `
-                SELECT e.id, e.title, e.content, e.event_date, GROUP_CONCAT(ep.id) AS photos_ids, GROUP_CONCAT(ep.photo_name) AS event_photos
+                SELECT e.id, e.title, e.content, e.video1, e.video2, e.video3, e.event_date, GROUP_CONCAT(ep.id) AS photos_ids, GROUP_CONCAT(ep.photo_name) AS event_photos
                 FROM events e
                 LEFT JOIN
                 events_photos AS ep ON e.id = ep.event_id

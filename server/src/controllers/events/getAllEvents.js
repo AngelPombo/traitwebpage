@@ -8,7 +8,7 @@ async function getAllEvents (req,res,next){
         const pool = await getPool();
 
             let [events] = await pool.query(
-                `SELECT e.id, e.create_date, e.title, e.content, GROUP_CONCAT(ep.id) AS photos_ids, GROUP_CONCAT(ep.photo_name) AS event_photos
+                `SELECT e.id, e.create_date, e.title, e.content, e.video1, e.video2, e.video3, GROUP_CONCAT(ep.id) AS photos_ids, GROUP_CONCAT(ep.photo_name) AS event_photos
                 FROM events e
                 LEFT JOIN
                 events_photos AS ep ON e.id = ep.event_id

@@ -10,7 +10,7 @@ async function getEvent (req,res,next) {
 
         let [event] = await pool.query(
             `
-                SELECT id, title, content, event_date
+                SELECT id, title, content, video1, video2, video3, event_date
                 FROM events
                 WHERE id=?
             `,[idEvent]

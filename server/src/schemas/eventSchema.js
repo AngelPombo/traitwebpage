@@ -17,7 +17,19 @@ const eventSchema = Joi.object({
         'string.min': 'La descripción del evento tiene que tener mínimo 2 caracteres.',
         'string.max': 'La descripción no puede tener más de 10000 caracteres.',
         'any.required': 'La descripción del evento es obligatoria.'
-    })
+    }),
+    video1: Joi.string().max(1000).pattern(new RegExp('^(https?://)?(www.youtube.com|youtu.?be)/.+$')).messages({
+        'string.max': 'El enlace debe tener un máximo de 1000 caracteres.',
+        'string.pattern.base': 'El enlace del primer video debe ser un enlace válido de YouTube.'
+    }),
+    video2: Joi.string().max(1000).pattern(new RegExp('^(https?://)?(www.youtube.com|youtu.?be)/.+$')).messages({
+        'string.max': 'El enlace debe tener un máximo de 1000 caracteres.',
+        'string.pattern.base': 'El enlace del segundo video debe ser un enlace válido de YouTube.'
+    }),
+    video3: Joi.string().max(1000).pattern(new RegExp('^(https?://)?(www.youtube.com|youtu.?be)/.+$')).messages({
+        'string.max': 'El enlace debe tener un máximo de 1000 caracteres.',
+        'string.pattern.base': 'El enlace del tercer video debe ser un enlace válido de YouTube.'
+    }),
 });
 
 module.exports = eventSchema;

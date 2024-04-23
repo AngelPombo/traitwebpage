@@ -41,6 +41,9 @@ async function createDB(){
                 create_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 title VARCHAR(100) NOT NULL,
                 content VARCHAR(10000) NOT NULL,
+                video1 VARCHAR(1000),
+                video2 VARCHAR(1000),
+                video3 VARCHAR(1000),
                 event_date DATETIME NOT NULL
             );
             `
@@ -60,7 +63,7 @@ async function createDB(){
             `
         );
 
-        await pool.query(
+        /* await pool.query(
 
             `
             CREATE TABLE IF NOT EXISTS carrousel_photos
@@ -70,24 +73,7 @@ async function createDB(){
                 photo_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
             )
             `
-        );
-
-        /* TODO ESTO DE VIDEO ESTAMOS PROBANDOLO (TEST) */
-
-        await pool.query(
-            `
-            CREATE TABLE IF NOT EXISTS videos
-            (
-                id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-                video_name VARCHAR(500),
-                video_path VARCHAR(500),
-                upload_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-                event_id INT UNSIGNED NOT NULL,
-                FOREIGN KEY (event_id) REFERENCES events(id)
-            );
-            `
-        )
-
+        ); */
 
         await pool.query(
             `INSERT INTO admins (id, admin_name, pwd, create_date) VALUES (DEFAULT, 'admin', SHA2('${adminPass}', 512), DEFAULT)`
