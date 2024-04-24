@@ -1,0 +1,33 @@
+.footer-main{
+    border-top: 2px solid black;
+    padding: 1rem;
+}
+
+.footer-nav{
+    display: flex;
+    
+    margin-bottom: 0.5rem;
+    justify-content: space-between;  
+    
+}
+
+.footer-nav > ul{
+    list-style: none;
+}
+
+.footer-ul-rrss{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.footer-div{
+    padding-top: 0.5rem;
+    text-align: center;
+
+}
+
+.logo-rrss{
+    width: 2rem;
+
+}
