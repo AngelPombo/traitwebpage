@@ -1,0 +1,50 @@
+.section-contacto{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    
+}
+
+.ul-logos{
+    list-style: none;
+}
+
+.logo-tlf, .logo-email{
+    width: 1rem;
+}
+
+.contacto-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-div > input{
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.form-div > textarea{
+    padding: 5rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.form-btn{
+    border-radius: 10px;
+    padding: 0.5rem;
+    width: 50%;
+}
+
+.btn-div{
+    display: flex;
+    justify-content: center;
+}
