@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "../Header/Header.css"
-import logo from "/traitlogo.png"
+import logo from "/traitlogoblanco.png"
 import { Link } from 'react-router-dom'
 
 function Header() {
@@ -15,28 +15,19 @@ function Header() {
   return (
     <header className='header'>
         <img src={logo} className='logo-img' />
-        <div className="menu">
-  
-          <nav className="burger-menu">
-            <input className="menu-check" type="checkbox" name="menu-check" value="" id="menu-check"/>
-            <label className="menu-open" for="menu-check">
-              <span className="burger1"></span>
-              <span className="burger2"></span>
-              <span className="burger3"></span>
-            </label>
-
-            <ul className="menu-options">
-
-              <li><Link to={'/quienes-somos'}><button onClick={handleClick}>¿Quienes somos?</button></Link></li>
-              <li><a href="/quienes-somos">¿Quienes somos?</a></li>
-              <li><a href="#">Servicios</a></li>
-              <li><a href="#">Trabajos</a></li>
-              <li><a href="#">Contacto</a></li>
-
-            </ul>
-          </nav>
-
-        </div>
+        <button onClick={handleClick} id="js_menu_button" className={`menu_button ${ clicked ? "on_menu" : ""}`}>
+                <span className="menu_button_line top"></span>
+                <span className="menu_button_line mid"></span>
+                <span className="menu_button_line botm"></span>
+            </button>
+            <menu className="menu-header">
+                <ul className={clicked ? "ul-header on" : "ul-header off"} id='menu'>
+                    <li className={clicked ? "header-li" : ""}><Link to={'/quienes-somos'} className="nav-link"><button onClick={handleClick}>¿Quienes Somos?</button></Link></li>
+                    <li className={clicked ? "header-li" : ""}><Link to={'/servicios'} className="nav-link"><button onClick={handleClick}>Servicios</button></Link></li>
+                    <li className={clicked ? "header-li" : ""}><Link to={'/trabajos'} className="nav-link"><button onClick={handleClick}>Trabajos</button></Link></li>
+                    <li className={clicked ? "header-li" : ""}><Link to={'/contacto'} className="nav-link"><button onClick={handleClick}>Contacto</button></Link></li>
+                </ul>
+            </menu>
     </header>
   )
 }
